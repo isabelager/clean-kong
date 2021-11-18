@@ -8,7 +8,7 @@ do
   echo "Downloading ${url}"
   if wget -q $url; then
     echo "Downloaded"
-    blender --background --python ../glb.py -- $1 $2 $line
+    blender --background --python ../glb.py -- $1 $2 $url
   else
     echo "Failed"
     echo "${url}" >> ../fail.txt

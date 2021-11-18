@@ -20,8 +20,8 @@ def main():
 
     srcpath = argv[0]
     dstpath = argv[1]
-    num = argv[2]
-
+    url = argv[2]
+    num = url.split('.glb')[0].split('/')[-1]
     # required for how blender rigged at moment
     abs_path = '/Users/iag/Dev/Blenderer/clean-kong'
 
