@@ -17,7 +17,6 @@ ADD cleaned ./cleaned
 
 COPY clean_skipped.sh ./
 COPY glb.py ./
-<<<<<<< HEAD
 
 RUN chmod +x clean_skipped.sh
 
@@ -25,11 +24,3 @@ RUN apt-get update
 RUN apt-get install curl -y
 
 CMD ["./clean_skipped.sh"]
-=======
-COPY fail.txt ./
-COPY fail_2.txt ./
-
-RUN chmod +x clean_skipped.sh
-
-RUN ./clean_skipped.sh failed_gorillas cleaned_gorillas fail.txt fail_2.txt
->>>>>>> 9fe5ae1f26dd3416cb2df7fb08f520193cddfbb4
