@@ -14,8 +14,9 @@ ADD cleaned_gorillas ./cleaned_gorillas
 
 COPY clean_skipped.sh ./
 COPY glb.py ./
-COPY fail_test2.txt ./
+COPY fail.txt ./
+COPY fail_2.txt ./
 
 RUN chmod +x clean_skipped.sh
 
-RUN ./clean_skipped.sh failed_gorillas cleaned_gorillas fail_test2.txt
+RUN ./clean_skipped.sh failed_gorillas cleaned_gorillas fail.txt fail_2.txt
