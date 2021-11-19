@@ -18,21 +18,19 @@ def main():
     # argv is list of str
     argv = argv[argv.index("--") + 1:]
 
-    print('Converting: '+argv[2])
+    print('Converting: '+argv[0])
 
-    #srcpath = argv[0]
-    #dstpath = argv[1]
-    url = argv[2]
+    url = argv[0]
     num = url.split('.glb')[0].split('/')[-1]
     # required for how blender rigged at moment
     #abs_path = '/Users/iag/Dev/Blenderer/clean-kong'
 
     #og_glb = os.path.join(abs_path, '{0}/{1}.glb'.format(srcpath, num))
-    og_glb = "./failed_gorillas/" + num + ".glb"
+    og_glb = "./failed/" + num + ".glb"
     print("og_glb: {0}".format(og_glb))
 
    # clean_glb = os.path.join(abs_path, "{0}/{1}_clean.glb".format(dstpath, num))
-    clean_glb = "./cleaned_gorillas/" + num + ".glb"
+    clean_glb = "./cleaned/" + num + ".glb"
     print("clean_glb: {0}".format(clean_glb))
 
     convertGLB(og_glb, clean_glb)

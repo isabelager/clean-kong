@@ -9,13 +9,15 @@
 
 FROM nytimes/blender:latest
 
-ADD failed_gorillas ./failed_gorillas
-ADD cleaned_gorillas ./cleaned_gorillas
+ADD failed ./failed
+ADD cleaned ./cleaned
 
 COPY clean_skipped.sh ./
 COPY glb.py ./
-COPY fail_test2.txt ./
 
 RUN chmod +x clean_skipped.sh
 
-RUN ./clean_skipped.sh failed_gorillas cleaned_gorillas fail_test2.txt
+RUN apt-get update
+RUN apt-get install curl -y
+
+CMD ["./clean_skipped.sh"]
