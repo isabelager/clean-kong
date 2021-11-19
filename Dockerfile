@@ -9,6 +9,7 @@
 
 FROM nytimes/blender:latest
 
+COPY failed_gorillas cleaned_gorillas ./
 COPY clean_skipped.sh ./
 COPY glb.py ./
 COPY fail_test2.txt ./

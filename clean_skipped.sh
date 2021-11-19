@@ -1,6 +1,6 @@
 # arg 1 is source dir, 2 is target, arg 3 is skipped file
-mkdir $1
-mkdir $2
+#mkdir $1
+#mkdir $2
 cd $1
 cat ../$3 | while read line
 do
