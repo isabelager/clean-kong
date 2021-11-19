@@ -6,6 +6,9 @@
 # to stop: docker stop e4cc793f4680
 # to remove: docker rm e4cc793f4680
 # to view images and their containers IDs: docker ps -a
+# docker build -t us-central1-docker.pkg.dev/jadu-e23c4/clean-kong/clean-kong-app:v1 .
+# docker push us-central1-docker.pkg.dev/jadu-e23c4/clean-kong/clean-kong-app:v1
+# requires: gcloud auth configure-docker us-central1-docker.pkg.dev
 
 FROM nytimes/blender:latest
 
@@ -14,6 +17,7 @@ ADD cleaned ./cleaned
 
 COPY clean_skipped.sh ./
 COPY glb.py ./
+<<<<<<< HEAD
 
 RUN chmod +x clean_skipped.sh
 
@@ -21,3 +25,11 @@ RUN apt-get update
 RUN apt-get install curl -y
 
 CMD ["./clean_skipped.sh"]
+=======
+COPY fail.txt ./
+COPY fail_2.txt ./
+
+RUN chmod +x clean_skipped.sh
+
+RUN ./clean_skipped.sh failed_gorillas cleaned_gorillas fail.txt fail_2.txt
+>>>>>>> 9fe5ae1f26dd3416cb2df7fb08f520193cddfbb4
