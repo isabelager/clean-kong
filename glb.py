@@ -18,6 +18,8 @@ def main():
     # argv is list of str
     argv = argv[argv.index("--") + 1:]
 
+    print('Converting: '+argv[2])
+
     #srcpath = argv[0]
     #dstpath = argv[1]
     url = argv[2]
@@ -26,7 +28,7 @@ def main():
     #abs_path = '/Users/iag/Dev/Blenderer/clean-kong'
 
     #og_glb = os.path.join(abs_path, '{0}/{1}.glb'.format(srcpath, num))
-    og_glb = "./failed_gorillas" + num + ".glb"
+    og_glb = "./failed_gorillas/" + num + ".glb"
     print("og_glb: {0}".format(og_glb))
 
    # clean_glb = os.path.join(abs_path, "{0}/{1}_clean.glb".format(dstpath, num))
