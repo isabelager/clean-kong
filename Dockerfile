@@ -1,4 +1,4 @@
-# docker build -t clean-kongs .
+# docker build --build-arg RANDO=$rando -t clean-kongs .
 # interactive shell to view image: docker run -it clean-kongs sh
 # exit
 # to clean build cache: docker builder prune
@@ -9,6 +9,10 @@
 # docker build -t us-central1-docker.pkg.dev/jadu-e23c4/clean-kong/clean-kong-app:v1 .
 # docker push us-central1-docker.pkg.dev/jadu-e23c4/clean-kong/clean-kong-app:v1
 # requires: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+# rando=`echo $RANDOM | base64 | head -c 20`
+# url="https://cyberkongz.fra1.cdn.digitaloceanspaces.com/public/"$rando"/"$rando".glb"
+# docker build --build-arg RANDO=$rando --build-arg URL=$url -t clean-kongs .
 
 FROM nytimes/blender:latest
 
@@ -22,4 +26,11 @@ COPY fail_2.txt ./
 
 RUN chmod +x clean_skipped.sh
 
-RUN ./clean_skipped.sh failed_gorillas cleaned_gorillas fail.txt fail_2.txt
+ARG RANDO
+ARG URL
+
+#RUN ./clean_skipped.sh failed_gorillas cleaned_gorillas fail.txt $RANDO $URL
+CMD ["./clean_skipped.sh", "failed_gorillas", "cleaned_gorillas", "fail.txt", ]
+
+#COPY test_url.sh ./
+#CMD ["./test_url.sh", $URL, $RANDO]
