@@ -17,7 +17,7 @@ do
     blender --background --python ./glb.py -- "$id"
   else
     echo "Failed"
-    echo "${url}" >> ./$1
+    echo "${id}" >> ./failed.txt
   fi
 
   # upload $4 to firebase
