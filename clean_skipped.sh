@@ -9,8 +9,6 @@ curl -X GET \
 cat ./pending.txt | while read id
 do
   url=$(eval echo "$1" | sed "s/['\"]//g")
-  echo "Arg is: ${exp}"
-#  url=https://cyberkongz.fra1.cdn.digitaloceanspaces.com/public/$id/$id.glb
   echo "Downloading ${url}"
   if wget -q $url -P "failed"; then
     echo "Downloaded"
