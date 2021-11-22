@@ -3,7 +3,7 @@
 
 #download pending file from storage
 curl -X GET \
-  -H "Authorization: Bearer ya29.a0ARrdaM87fru4sUMR1KVLQc0kGow_bXBTgBpUKBeZ8g90tcmI-SqQctorWwK5UYbG1mnUpbooSV5ijdIUVOyz07NQhuYV8Y1pgSZDPxKTib2qmYsZuoWx1d31wvVi9XuoeMGvFgSdWzeYw-oHjzIGfdEP7slkRQ" \
+  -H "Authorization: Bearer $CLOUD_KEY" \
   -o "pending.txt" \
   "https://storage.googleapis.com/jadu-qa/Collections/CyberKong/pending.txt"
 cat ./pending.txt | while read id
