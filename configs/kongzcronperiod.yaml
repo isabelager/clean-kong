@@ -1,0 +1,26 @@
+# cronjob.yaml
+#
+# curl -H "Metadata-Flavor: Google" http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token
+#
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cyberkongz-conversion
+spec:
+  schedule: "0 0 * * *"
+  concurrencyPolicy: Allow
+  startingDeadlineSeconds: 100
+  suspend: false
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccount: jadu-conversion-service
+          containers:
+          - name: cyberkongz-converter
+            image: "us-central1-docker.pkg.dev/jadu-e23c4/clean-kong/clean-kong-app:v1"
+            command: ["./clean_skipped.sh"]
+            args: ["https://cyberkongz.fra1.cdn.digitaloceanspaces.com/public/${id@Q}/${id@Q}.glb"]
+          restartPolicy: OnFailure

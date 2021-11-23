@@ -1,0 +1,12 @@
+# This is used to test if gcloud has the right permissions to do whatever
+apiVersion: v1
+kind: Pod
+metadata:
+  name: workload-identity-test
+  namespace: default
+spec:
+  containers:
+  - image: google/cloud-sdk:slim
+    name: workload-identity-test
+    command: ["sleep","infinity"]
+  serviceAccountName: jadu-conversion-service

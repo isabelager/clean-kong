@@ -2,10 +2,8 @@
 # arg 1 is skipped file
 
 #download pending file from storage
-curl -X GET \
-  -H "Authorization: Bearer $CLOUD_KEY" \
-  -o "pending.txt" \
-  "https://storage.googleapis.com/jadu-qa/Collections/CyberKong/pending.txt"
+gsutil cp gs://jadu-qa/Collections/CyberKong/pending.txt pending.txt
+
 cat ./pending.txt | while read id
 do
   url=$(eval echo "$1" | sed "s/['\"]//g")
@@ -13,10 +11,12 @@ do
   if wget -q $url -P "failed"; then
     echo "Downloaded"
     blender --background --python ./glb.py -- "$id"
+    gsutil cp ./cleaned/$id.glb gs://jadu-qa/Collections/CyberKong/"$id".glb
   else
-    echo "Failed"
+    echo "Failed: ${id}"
     echo "${id}" >> ./failed.txt
   fi
-
-  # upload $4 to firebase
 done
+
+# upload pending back to storage
+gsutil cp ./failed.txt gs://jadu-qa/Collections/CyberKong/pending.txt

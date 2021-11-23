@@ -1,0 +1,5 @@
+services:
+  - name: cyberkongz
+    url: https://cyberkongz.fra1.cdn.digitaloceanspaces.com/public/
+  - name: whatever
+    url: https://whatever.com
