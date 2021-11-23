@@ -11,7 +11,9 @@ do
   if wget -q $url -P "failed"; then
     echo "Downloaded"
     blender --background --python ./glb.py -- "$id"
+    rm ./failed/"$id".glb
     gsutil cp ./cleaned/$id.glb gs://jadu-qa/Collections/CyberKong/"$id".glb
+    rm ./cleaned/"$id".glb
   else
     echo "Failed: ${id}"
     echo "${id}" >> ./failed.txt
